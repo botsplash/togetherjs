@@ -14,7 +14,7 @@ echo "togetherjs:build:start"
 git pull --rebase
 handle_error $?
 
-yarn install
+NODE_ENV=development yarn install
 handle_error $?
 
 yarn run build
