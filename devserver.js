@@ -3,7 +3,7 @@ http = require("http"),
 url  = require("url"),
 path = require("path"),
 fs   = require("fs"),
-port = process.argv[2] || process.env['DEV_SERVER_PORT'] || process.env['PORT'] || 8080;
+port = process.argv[2] || process.env['TJS_DEV_SERVER_PORT'] || process.env['PORT'] || 8080;
 
 http.createServer(function(request, response) {
 
