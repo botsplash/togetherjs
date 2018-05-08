@@ -490,10 +490,8 @@ define(["require", "jquery", "util", "session", "templates", "templating", "link
       windowing.show("#togetherjs-confirm-end");
     });
 
-    $("#togetherjs-end-session").click(function () {
+    $("#togetherjs-end-chat, #togetherjs-end-session").click(function () {
       session.close();
-      //$(".overlay").remove();
-
     });
 
     $("#togetherjs-menu-update-color").click(function () {
@@ -973,7 +971,7 @@ define(["require", "jquery", "util", "session", "templates", "templating", "link
       assert(typeof attrs.url == "string");
       var messageId = attrs.peer.className("invite-");
       var date = attrs.date || Date.now();
-      var hrefTitle = attrs.url.replace(/\#?&togetherjs=.*/, "").replace(/^\w+:\/\//, "");
+      var hrefTitle = attrs.url.replace(/\#?&botsplashtjs=.*/, "").replace(/^\w+:\/\//, "");
       var el = templating.sub("invite", {
         peer: attrs.peer,
         date: date,

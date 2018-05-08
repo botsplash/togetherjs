@@ -9,7 +9,7 @@
 
   <!-- This is the main set of buttons: -->
   <div id="togetherjs-dock" class="togetherjs-dock-right">
-    <div id="togetherjs-dock-anchor" title="{{ gettext('Move the dock') }}">
+    <div id="togetherjs-dock-anchor" style="display:none;" title="{{ gettext('Move the dock') }}">
       <span id="togetherjs-dock-anchor-horizontal">
         <img src="http://localhost:8080/togetherjs/images/icn-handle-circle@2x.png" alt="drag">
       </span>
@@ -27,12 +27,18 @@
           <div class="togetherjs-person togetherjs-person-status-overlay"></div>
         </button>
       </div>
-      <button id="togetherjs-profile-button" class="togetherjs-button" title="{{ gettext('This is you') }}">
+      <div id="togetherjs-end-chat" class="togetherjs-button togetherjs-end-chat">
+        <img src="http://localhost:8080/togetherjs/images/button-end-session.png" alt="">
+        <div class="togetherjs-end-chat-text">
+          Share
+        </div>
+      </div>
+      <button id="togetherjs-profile-button" style="display:none" class="togetherjs-button" title="{{ gettext('This is you') }}">
         <div class="togetherjs-person togetherjs-person-self"></div>
         <div id="togetherjs-profile-arrow"></div>
       </button>
-      <button id="togetherjs-share-button" class="togetherjs-button" title="{{ gettext('Add a friend') }}"></button>
-      <button id="togetherjs-audio-button" class="togetherjs-button" title="{{ gettext('Turn on microphone')}}">
+      <button id="togetherjs-share-button" style="display:none" class="togetherjs-button" title="{{ gettext('Add a friend') }}"></button>
+      <button id="togetherjs-audio-button" style="display:none" class="togetherjs-button" title="{{ gettext('Turn on microphone')}}">
         <span id="togetherjs-audio-unavailable" class="togetherjs-audio-set" data-toggles=".togetherjs-audio-set">
         </span>
         <span id="togetherjs-audio-ready" class="togetherjs-audio-set" data-toggles=".togetherjs-audio-set" style="display: none">
@@ -48,7 +54,7 @@
         <span id="togetherjs-audio-error" class="togetherjs-audio-set" data-toggles=".togetherjs-audio-set" style="display: none">
         </span>
       </button>
-      <button id="togetherjs-chat-button" class="togetherjs-button" title="{{ gettext('Chat') }}"></button>
+      <button id="togetherjs-chat-button" style="display:none" class="togetherjs-button" title="{{ gettext('Chat') }}"></button>
       <div id="togetherjs-dock-participants"></div>
     </div>
   </div>

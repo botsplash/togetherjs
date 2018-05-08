@@ -782,6 +782,14 @@
     return session.shareUrl();
   };
 
+  TogetherJS.close = function () {
+    if (! TogetherJS.require) {
+      return null;
+    }
+    var session = TogetherJS.require("session");
+    return session.close();
+  };
+
   var listener = null;
 
   TogetherJS.listenForShortcut = function () {
@@ -851,7 +859,7 @@
   // It's nice to replace this early, before the load event fires, so we conflict
   // as little as possible with the app we are embedded in:
   var hash = location.hash.replace(/^#/, "");
-  var m = /&?togetherjs=([^&]*)/.exec(hash);
+  var m = /&?botsplashtjs=([^&]*)/.exec(hash);
   if (m) {
     TogetherJS.startup._joinShareId = m[1];
     TogetherJS.startup.reason = "joined";
@@ -920,7 +928,5 @@
     TogetherJS.listenForShortcut();
   }
 
-  // For compatibility:
-  window.TowTruck = TogetherJS;
-
+  window.$botsplashTjs = TogetherJS;
 })();

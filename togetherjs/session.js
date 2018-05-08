@@ -63,13 +63,13 @@ define(["require", "util", "channels", "jquery", "storage"], function (require, 
     hash = hash.replace(/&?togetherjs-[a-zA-Z0-9]+/, "");
     hash = hash || "#";
     return location.protocol + "//" + location.host + location.pathname + query +
-           hash + "&togetherjs=" + session.shareId;
+           hash + "&botsplashtjs=" + session.shareId;
   };
 
   session.recordUrl = function () {
     assert(session.shareId);
     var url = TogetherJS.baseUrl.replace(/\/*$/, "") + "/togetherjs/recorder.html";
-    url += "#&togetherjs=" + session.shareId + "&hubBase=" + TogetherJS.config.get("hubBase");
+    url += "#&botsplashtjs=" + session.shareId + "&hubBase=" + TogetherJS.config.get("hubBase");
     return url;
   };
 
@@ -101,7 +101,9 @@ define(["require", "util", "channels", "jquery", "storage"], function (require, 
 
   function openChannel() {
     assert(! channel, "Attempt to re-open channel");
-    console.info("Connecting to", session.hubUrl(), location.href);
+    if (DEBUG) {
+      console.info("Connecting to", session.hubUrl(), location.href);
+    }
     var c = channels.WebSocketChannel(session.hubUrl());
     c.onmessage = function (msg) {
       if (! readyForMessages) {
@@ -289,7 +291,7 @@ define(["require", "util", "channels", "jquery", "storage"], function (require, 
       if (! shareId) {
         // FIXME: I'm not sure if this will ever happen, because togetherjs.js should
         // handle it
-        var m = /&?togetherjs=([^&]*)/.exec(hash);
+        var m = /&?botsplashtjs=([^&]*)/.exec(hash);
         if (m) {
           isClient = ! m[1];
           shareId = m[2];
@@ -395,11 +397,9 @@ define(["require", "util", "channels", "jquery", "storage"], function (require, 
           require(features, function () {
             $(function () {
               peers = require("peers");
-              var startup = require("startup");
               session.emit("start");
               session.once("ui-ready", function () {
                 readyForMessages = true;
-                startup.start();
               });
               ui.activateUI();
               TogetherJS.config.close("enableAnalytics");

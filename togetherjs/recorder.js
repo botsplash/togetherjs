@@ -36,7 +36,7 @@ define(["jquery", "util", "channels"], function ($, util, channels) {
     baseUrl = options.baseUrl;
     recorder.shareId = TogetherJS.startup._joinShareId;
     if (! recorder.shareId) {
-      match = /\&togetherjs=([^&]+)/.exec(location.hash);
+      match = /\&botsplashtjs=([^&]+)/.exec(location.hash);
       if (! match) {
         display("#no-session-id");
         return;
