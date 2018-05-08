@@ -41,7 +41,11 @@
     "grunt-lib-phantomjs": "~0.6.0"
   },
   "scripts": {
-    "start": "node hub/server.js",
+    "start": "npm-run-all -p hubserver devserver watch",
+    "hubserver": "HUB_SERVER_PORT=9012 node hub/server.js",
+    "devserver": "DEV_SERVER_PORT=9013 node devserver.js",
+    "watch": "grunt devwatch",
+    "build": "grunt build buildsite --no-hardlink",
     "test": "grunt test"
   }
 }
