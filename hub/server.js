@@ -208,8 +208,9 @@ function pickRandom(seq) {
 }
 
 function startServer(port, host) {
+  logger.info('HUB Server starting at:', port, 'host:', host);
   server.listen(port, host, function() {
-    logger.info('HUB Server listening on port ' + port + " interface: " + host + " PID: " + process.pid);
+    logger.warn('HUB Server listening on port ' + port + " interface: " + host + " PID: " + process.pid);
   });
 }
 
@@ -412,9 +413,9 @@ if (require.main == module) {
       .describe("log", "A file to log to (default $LOG_FILE or stdout)")
       .describe("stdout", "Log to both stdout and the log file");
   var port = ops.argv.port || process.env.TJS_HUB_SERVER_PORT || process.env.HUB_SERVER_PORT ||
-      process.env.VCAP_APP_PORT || process.env.PORT || 8080;
+      process.env.VCAP_APP_PORT || 9012;
   var host = ops.argv.host || process.env.TJS_HUB_SERVER_HOST || process.env.HUB_SERVER_HOST ||
-      process.env.VCAP_APP_HOST || process.env.HOST || '127.0.0.1';
+      process.env.VCAP_APP_HOST || '127.0.0.1';
   var logLevel = process.env.LOG_LEVEL || 0;
   var logFile = process.env.LOG_FILE || ops.argv.log;
   var stdout = ops.argv.stdout || !logFile;
