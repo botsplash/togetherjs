@@ -4,6 +4,7 @@
 
 define(["jquery"], function ($) {
   // This isn't really a "module" since it just patches jQuery itself
+  var popoutZIndex = 2147483055;
 
   // FIX ME Animations TO DO
   // walkthrough animations go here
@@ -72,14 +73,14 @@ define(["jquery"], function ($) {
         this.css({
           left: "0px",
           opacity: 1,
-          "zIndex": 8888
+          "zIndex": popoutZIndex
         });
 
         //starting position for arrow
         $('#togetherjs-window-pointer-right').css({
           left: "+=74px",
           opacity: 1,
-          "zIndex": 8888
+          "zIndex": popoutZIndex
         });
 
         //animate arrow out
@@ -121,14 +122,14 @@ define(["jquery"], function ($) {
       this.css({
         left: "+=74px",
         opacity: 1,
-        "zIndex": 8888
+        "zIndex": popoutZIndex
       });
 
       //starting position for arrow
       $('#togetherjs-window-pointer-right').css({
         left: "+=74px",
         opacity: 1,
-        "zIndex": 8888
+        "zIndex": popoutZIndex
       });
 
       //animate arrow out
@@ -173,12 +174,12 @@ define(["jquery"], function ($) {
       //top: "240px",
       left: "+=74px",
       opacity: 0,
-      "zIndex": 8888
+      "zIndex": popoutZIndex
     });
     return this.animate({
       "left": "-=74px",
       opacity: 1,
-      "zIndex": 9999
+      "zIndex": popoutZIndex + 1
     }, "fast");
   };
 
