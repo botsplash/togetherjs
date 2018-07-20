@@ -97,7 +97,7 @@ Logger.prototype = {
   };
 });
 
-var logger = new Logger(0, null, true);
+var logger = new Logger(1, null, true);
 
 var server = http.createServer(function(request, response) {
   var url = parseUrl(request.url, true);
@@ -416,7 +416,7 @@ if (require.main == module) {
       process.env.VCAP_APP_PORT || 9012;
   var host = ops.argv.host || process.env.TJS_HUB_SERVER_HOST || process.env.HUB_SERVER_HOST ||
       process.env.VCAP_APP_HOST || '127.0.0.1';
-  var logLevel = process.env.LOG_LEVEL || 0;
+  var logLevel = process.env.LOG_LEVEL || 1;
   var logFile = process.env.LOG_FILE || ops.argv.log;
   var stdout = ops.argv.stdout || !logFile;
   if (ops.argv['log-level']) {
